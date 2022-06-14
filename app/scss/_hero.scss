@@ -1,0 +1,97 @@
+.hero {
+  background-color: $veryLightGray;
+  padding-bottom: 2rem;
+  @include breakpoint-up(large) {
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding-bottom: 1.5rem;
+    @include breakpoint-up(large) {
+      height: 41rem;
+      display: flex;
+      align-items: center;
+      padding-left: 1.5rem;
+      padding-bottom: 0;
+    }
+  }
+
+  &__image {
+    min-height: 17.5rem;
+    position: relative;
+    @include breakpoint-up(large) {
+      flex: 3;
+      order: 2;
+      height: 100%;
+    }
+
+    @include breakpoint-up(medium) {
+      min-height: 25rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("/images/bg-intro-mobile.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      @include breakpoint-up(large) {
+        background-image: url("/images/bg-intro-desktop.svg");
+        background-size: 1200px;
+        background-position: top -235px left -68px;
+      }
+    }
+
+    &::after {
+      @include breakpoint-up(medium) {
+        background-size: 52%;
+      }
+      @include breakpoint-up(large) {
+        background-position: bottom -35px left 70px;
+        background-size: 700px;
+        bottom: -50px;
+        height: calc(100% + 50px);
+      }
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("/images/image-mockups.png");
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: calc(min(100%, 320px));
+    }
+  }
+
+  &__text {
+    text-align: center;
+    padding-inline: 1.5rem;
+    @include breakpoint-up(large) {
+      flex: 2;
+      order: 1;
+      padding-inline: 0;
+      text-align: left;
+    }
+
+    p {
+      @include breakpoint-up(medium) {
+        max-width: 80%;
+        margin-inline: auto;
+      }
+      @include breakpoint-up(large) {
+        font-size: 1rem;
+        max-width: initial;
+      }
+    }
+  }
+}
+
+.hero.container {
+  @include breakpoint-down(medium) {
+    padding: 0;
+    max-width: none;
+  }
+}

@@ -1,0 +1,110 @@
+footer {
+  background-color: $darkBlue;
+}
+.footer {
+  padding-block: 3rem;
+  text-align: center;
+  font-size: 1rem;
+
+  @include breakpoint-up(medium) {
+    text-align: left;
+    display: flex;
+  }
+
+  #logo-text {
+    fill: #fff;
+  }
+
+  &__logo-social {
+    @include breakpoint-up(medium) {
+      margin-right: clamp(1rem, 4vw, 4rem);
+    }
+  }
+  &__social {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include breakpoint-up(medium) {
+      justify-content: left;
+      margin-top: 3.8rem;
+    }
+    gap: 1rem;
+    a {
+      svg path {
+        transition: all 150ms ease-in-out;
+      }
+      &:hover svg path {
+        fill: $limeGreen;
+      }
+    }
+  }
+
+  &__menu {
+    flex: 1;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include breakpoint-up(medium) {
+      margin-top: 0;
+      padding-inline: clamp(0px, 1.5vw, 2rem);
+      gap: clamp(1rem, 5vw, 5rem);
+      flex-direction: row;
+      justify-content: space-between;
+      flex-grow: 0;
+      flex-shrink: 0;
+      text-align: left;
+    }
+    @include breakpoint-up(large) {
+      gap: clamp(1rem, 5vw, 7rem);
+    }
+
+    li {
+      list-style: none;
+      &:not(:last-child) {
+        margin-block: 1.5rem;
+        margin-top: 0;
+      }
+    }
+    a {
+      color: white;
+      transition: all 150ms ease-in-out;
+      &:hover {
+        color: $limeGreen;
+      }
+      @include breakpoint-up(medium) {
+        display: block;
+        width: max-content;
+      }
+    }
+  }
+
+  &__cta_rights {
+    @include breakpoint-up(medium) {
+      flex: 2;
+      text-align: right;
+    }
+
+    span {
+      @include breakpoint-up(medium) {
+        display: block;
+      }
+      @include breakpoint-up(large) {
+        display: inline;
+      }
+    }
+    .button {
+      margin-block: 1.5rem;
+      text-align: center;
+      min-width: 11.25rem;
+      @include breakpoint-up(medium) {
+        margin-top: 0;
+      }
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
