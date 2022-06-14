@@ -1,38 +1,51 @@
-footer {
-  background-color: $darkBlue;
-}
 .footer {
-  padding-block: 3rem;
+  background-color: $darkBlue;
   text-align: center;
   font-size: 1rem;
-
-  @include breakpoint-up(medium) {
-    text-align: left;
-    display: flex;
-  }
-
-  #logo-text {
-    fill: #fff;
-  }
-
-  &__logo-social {
-    @include breakpoint-up(medium) {
-      margin-right: clamp(1rem, 4vw, 4rem);
+  .container {
+    padding: 2.5rem;
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 3fr;
+      grid-template-rows: 1fr auto;
+      grid-template-areas: "logo links1 links2 cta" "social links1 links2 right";
+      gap: 1rem;
     }
   }
+
+  &__logo {
+    display: inline-block;
+    margin-bottom: 1.875rem;
+    @include breakpoint-up(large) {
+      text-align: start;
+      grid-area: logo;
+      margin-bottom: 0;
+    }
+    #logo-text {
+      fill: #fff;
+    }
+  }
+
   &__social {
-    margin-top: 1.5rem;
+    margin-bottom: 1.875rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    @include breakpoint-up(medium) {
-      justify-content: left;
-      margin-top: 3.8rem;
+    gap: 0.75rem;
+    @include breakpoint-up(large) {
+      justify-content: start;
+      align-items: end;
+      grid-area: social;
+      margin-bottom: 0;
     }
-    gap: 1rem;
     a {
-      svg path {
-        transition: all 150ms ease-in-out;
+      height: 1.25rem;
+      svg {
+        width: 100%;
+        height: 100%;
+        path {
+          transition: all 150ms ease-in-out;
+        }
       }
       &:hover svg path {
         fill: $limeGreen;
@@ -40,71 +53,64 @@ footer {
     }
   }
 
-  &__menu {
-    flex: 1;
-    margin-top: 1.5rem;
+  &__links {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    font-size: 0.9375rem;
 
-    @include breakpoint-up(medium) {
-      margin-top: 0;
-      padding-inline: clamp(0px, 1.5vw, 2rem);
-      gap: clamp(1rem, 5vw, 5rem);
-      flex-direction: row;
-      justify-content: space-between;
-      flex-grow: 0;
-      flex-shrink: 0;
-      text-align: left;
-    }
     @include breakpoint-up(large) {
-      gap: clamp(1rem, 5vw, 7rem);
+      // text-align: left;
+      align-items: flex-start;
+      justify-content: space-between;
     }
 
+    &.col1 {
+      @include breakpoint-up(large) {
+        grid-area: links1;
+      }
+    }
+    &.col2 {
+      @include breakpoint-up(large) {
+        grid-area: links2;
+      }
+    }
     li {
       list-style: none;
-      &:not(:last-child) {
-        margin-block: 1.5rem;
-        margin-top: 0;
-      }
-    }
-    a {
-      color: white;
-      transition: all 150ms ease-in-out;
-      &:hover {
-        color: $limeGreen;
-      }
-      @include breakpoint-up(medium) {
-        display: block;
-        width: max-content;
+      a {
+        line-height: 2.25;
+        color: white;
+        transition: all 150ms ease-in-out;
+        &:hover {
+          color: $limeGreen;
+        }
+        @include breakpoint-up(large) {
+          line-height: 1;
+        }
       }
     }
   }
 
-  &__cta_rights {
-    @include breakpoint-up(medium) {
-      flex: 2;
-      text-align: right;
-    }
+  &__cta {
+    margin-block: 1.875rem;
 
-    span {
-      @include breakpoint-up(medium) {
-        display: block;
-      }
-      @include breakpoint-up(large) {
-        display: inline;
-      }
+    @include breakpoint-up(large) {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      text-align: right;
+      grid-area: cta;
     }
     .button {
-      margin-block: 1.5rem;
       text-align: center;
       min-width: 11.25rem;
-      @include breakpoint-up(medium) {
-        margin-top: 0;
-      }
     }
-    p {
-      margin: 0;
+  }
+  &__rights {
+    font-size: 0.8125rem;
+    color: $grayishBlue;
+    @include breakpoint-up(large) {
+      text-align: right;
+      grid-area: right;
+      align-self: end;
     }
   }
 }
